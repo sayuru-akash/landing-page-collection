@@ -493,6 +493,8 @@ export function CreateStudioPage() {
       })),
     [typing.cards],
   );
+  const activeHeroCard =
+    heroCards.find((card) => card.platform === activePlatform) ?? heroCards[0];
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveDragId(String(event.active.id));
@@ -675,39 +677,7 @@ export function CreateStudioPage() {
                   </div>
                 </div>
 
-                <div className={styles.generatedGrid}>
-                  {heroCards.map((card, index) => (
-                    <motion.article
-                      key={card.id}
-                      className={styles.generatedCard}
-                      style={
-                        {
-                          "--studio-accent": platformColorById[card.platform],
-                        } as CSSProperties
-                      }
-                      initial={{
-                        opacity: 0,
-                        y: 32,
-                        rotate: index === 1 ? 2 : -2,
-                      }}
-                      animate={{ opacity: 1, y: 0, rotate: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 220,
-                        damping: 20,
-                        delay: 0.2 + index * 0.08,
-                      }}
-                    >
-                      <div className={styles.generatedHeader}>
-                        <ChannelBadge platform={card.platform} />
-                        <span>{card.label}</span>
-                      </div>
-                      <p>{card.visibleText}</p>
-                    </motion.article>
-                  ))}
-                </div>
-
-                <div className={styles.heroDeviceWrap}>
+                <div className={styles.heroStudioCanvas}>
                   <div className={styles.platformSwitcher}>
                     <LayoutGroup id="platform-switcher">
                       {studioPlatforms.map((platform) => (
@@ -742,42 +712,93 @@ export function CreateStudioPage() {
                     </LayoutGroup>
                   </div>
 
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activePlatformData.id}
-                      className={styles.deviceFrame}
-                      initial={{ opacity: 0, x: 18, scale: 0.98 }}
-                      animate={{ opacity: 1, x: 0, scale: 1 }}
-                      exit={{ opacity: 0, x: -18, scale: 0.98 }}
-                      transition={{ duration: 0.35 }}
-                    >
-                      <div className={styles.deviceHeader}>
-                        <div className={styles.windowDots}>
-                          <span />
-                          <span />
-                          <span />
+                  <div className={styles.heroCanvasInner}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activePlatformData.id}
+                        className={`${styles.deviceFrame} ${styles.heroDeviceFrame}`}
+                        initial={{ opacity: 0, x: 18, scale: 0.98 }}
+                        animate={{ opacity: 1, x: 0, scale: 1 }}
+                        exit={{ opacity: 0, x: -18, scale: 0.98 }}
+                        transition={{ duration: 0.35 }}
+                      >
+                        <div className={styles.deviceHeader}>
+                          <div className={styles.windowDots}>
+                            <span />
+                            <span />
+                            <span />
+                          </div>
+                          <span>{activePlatformData.badge}</span>
                         </div>
-                        <span>{activePlatformData.badge}</span>
-                      </div>
 
-                      <div className={styles.devicePreview}>
-                        <Image
-                          alt={`${activePlatformData.label} preview mockup`}
-                          src={activePlatformData.image}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 520px"
-                        />
-                      </div>
-
-                      <div className={styles.deviceFooter}>
-                        <div>
-                          <strong>{activePlatformData.label} preview</strong>
-                          <p>{activePlatformData.audience}</p>
+                        <div
+                          className={`${styles.devicePreview} ${styles.heroDevicePreview}`}
+                        >
+                          <Image
+                            alt={`${activePlatformData.label} preview mockup`}
+                            src={activePlatformData.image}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 520px"
+                          />
                         </div>
-                        <p>{activePlatformData.preview}</p>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+
+                        <div
+                          className={`${styles.deviceFooter} ${styles.heroDeviceFooter}`}
+                        >
+                          <div>
+                            <strong>{activePlatformData.label} preview</strong>
+                            <p>{activePlatformData.audience}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    <AnimatePresence mode="wait">
+                      <motion.aside
+                        key={activeHeroCard.id}
+                        className={styles.heroPopupCard}
+                        style={
+                          {
+                            "--studio-accent":
+                              platformColorById[activeHeroCard.platform],
+                          } as CSSProperties
+                        }
+                        initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 12, scale: 0.96 }}
+                        transition={{ type: "spring", stiffness: 240, damping: 22 }}
+                      >
+                        <div className={styles.heroPopupHeader}>
+                          <span className={styles.heroPopupTag}>Generated draft</span>
+                          <ChannelBadge platform={activeHeroCard.platform} />
+                        </div>
+                        <strong>{activeHeroCard.label}</strong>
+                        <p>{activeHeroCard.visibleText}</p>
+                      </motion.aside>
+                    </AnimatePresence>
+                  </div>
+
+                  <div className={styles.heroMiniCards}>
+                    {heroCards.map((card) => (
+                      <button
+                        key={card.id}
+                        className={styles.heroMiniCard}
+                        data-active={card.platform === activePlatform}
+                        onClick={() =>
+                          startTransition(() => {
+                            setActivePlatform(card.platform);
+                          })
+                        }
+                        type="button"
+                      >
+                        <div className={styles.generatedHeader}>
+                          <ChannelBadge platform={card.platform} />
+                          <span>{card.label}</span>
+                        </div>
+                        <p>{card.visibleText || "Generating draft..."}</p>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             </div>
