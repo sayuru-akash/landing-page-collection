@@ -150,8 +150,12 @@ export function BufferHeader() {
           </div>
 
           <div className="Nav_contentTrailing__bPmdC">
-            <Link className="Nav_navLink___7VKG Nav_loginLink__WsxT8" href="https://login.buffer.com/login">
-              Log in
+            <Link
+              className="LinkButtonGhost_link__pzdZR Nav_loginLink__WsxT8"
+              href="https://login.buffer.com/login"
+              data-size="default"
+            >
+              <span className="LinkButtonGhost_linkContent__QVeoO">Log in</span>
             </Link>
             <Link
               className="LinkButtonBrand_link__PpJkx Nav_signupLink__h_e36"

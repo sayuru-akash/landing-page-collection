@@ -235,13 +235,13 @@ export default function Home() {
                 — no bots, just real people who care.
               </p>
               <div className="CustomerSupportSection_ctas__6uMcs">
-                <Link className="LinkButtonGhost_link__pzdZR" href="https://support.buffer.com/">
+                <Link className="LinkButtonGhost_link__pzdZR" href="https://support.buffer.com/" data-size="default">
                   <span className="LinkButtonGhost_linkContent__QVeoO">
                     <span>Visit the Help Center</span>
                     <ArrowRightIcon className="LinkButtonGhost_icon__WUcQu" />
                   </span>
                 </Link>
-                <Link className="LinkButtonGhost_link__pzdZR" href="https://discord.gg/aQdKKr6kDY">
+                <Link className="LinkButtonGhost_link__pzdZR" href="https://discord.gg/aQdKKr6kDY" data-size="default">
                   <span className="LinkButtonGhost_linkContent__QVeoO">
                     <span>Join Discord</span>
                     <ArrowRightIcon className="LinkButtonGhost_icon__WUcQu" />
@@ -338,7 +338,11 @@ export default function Home() {
                     helps drive positive change within our industry.
                   </p>
                 </div>
-                <Link className="LinkButtonGhost_link__pzdZR OpenCompanySection_contentLeadingCTA__mUNFb" href="/open">
+                <Link
+                  className="LinkButtonGhost_link__pzdZR OpenCompanySection_contentLeadingCTA__mUNFb"
+                  href="/open"
+                  data-size="default"
+                >
                   <span className="LinkButtonGhost_linkContent__QVeoO">
                     <span>Open dashboard</span>
                     <ArrowRightIcon className="OpenCompanySection_contentLeadingCTAIcon__YEOYX" />
@@ -359,7 +363,7 @@ export default function Home() {
               </dl>
 
               <div className="OpenCompanySection_contentTrailingCTAContainer__cx2pd">
-                <Link className="LinkButtonGhost_link__pzdZR" href="/open">
+                <Link className="LinkButtonGhost_link__pzdZR" href="/open" data-size="default">
                   <span className="LinkButtonGhost_linkContent__QVeoO">
                     <span>Open dashboard</span>
                     <ArrowRightIcon className="OpenCompanySection_contentLeadingCTAIcon__YEOYX" />

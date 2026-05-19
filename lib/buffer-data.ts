@@ -225,12 +225,12 @@ export const socialProof = [
   {
     title: "People and brands using Buffer",
     start: 100000,
-    end: 227458,
+    end: 232314,
   },
   {
     title: "Posts published last month",
-    start: 8760919,
-    end: 10951149,
+    start: 8509296,
+    end: 10636620,
   },
   {
     title: "Social platforms supported",
@@ -264,7 +264,7 @@ export const coreFeatures = [
     theme: "yellow",
     eyebrow: "Community",
     heading: "Reply to comments in a flash",
-    text: "Engage with your audience on Threads, LinkedIn, Bluesky, Facebook, Instagram, and X at 10x speed. Buffer will help you triage and respond to comments from one simple dashboard.",
+    text: "Engage with your audience across all your channels at 10x speed. Buffer will help you triage and respond to comments from one simple dashboard.",
     href: "/community",
     image:
       "/images/homepage/community-comments.webp",
@@ -372,7 +372,7 @@ export const audienceContent = {
     people: [
       {
         name: "Midmodmood",
-        username: "@midmodmood",
+        username: "@midmod.mood",
         followers: "236k followers on Instagram",
         image:
           "/images/testimonials/midmodmood.webp",
@@ -427,7 +427,7 @@ export const audienceContent = {
       },
       {
         name: "Influence Media",
-        username: "@influencemedia",
+        username: "@weareinfluencemedia",
         followers: "5.5k followers on Instagram",
         image:
           "/images/testimonials/influence-media.webp",
@@ -489,7 +489,7 @@ export const resources = [
     theme: "green",
     title: "Best Time to Post",
     text: "Discover the best times to post on social media to maximize your engagement",
-    href: "/resources/how-often-to-post-on-social-media",
+    href: "/resources/best-time-to-post-social-media",
     smallImage:
       "/images/homepage/best-time-to-post-small.webp",
     largeImage:
@@ -500,7 +500,7 @@ export const resources = [
     theme: "orange",
     title: "Social Media Resources",
     text: "A collection of articles and interviews packed with tips, stories, and insights to level up your social media marketing game",
-    href: "/library",
+    href: "/resources/",
     smallImage:
       "/images/homepage/social-media-resources-small.webp",
     largeImage:
@@ -509,10 +509,10 @@ export const resources = [
 ];
 
 export const openCompanyMetrics = [
-  { label: "MAU", subtitle: "Monthly active users", value: "227,458" },
-  { label: "Total customers", subtitle: "Total customers", value: "74,126" },
+  { label: "MAU", subtitle: "Monthly active users", value: "232,314" },
+  { label: "Total customers", subtitle: "Total customers", value: "76,299" },
   { label: "Teammates", subtitle: "Across 15 countries", value: "73" },
-  { label: "ARR", subtitle: "Annual recurring revenue", value: "$24.6M" },
+  { label: "ARR", subtitle: "Annual recurring revenue", value: "$25.1M" },
 ];
 
 export const footerGroups = [
