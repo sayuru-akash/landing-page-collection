@@ -327,15 +327,17 @@ export default function Home() {
           <div className="max-inline-size-container-wide">
             <div className="OpenCompanySection_content__B3oGm">
               <div className="OpenCompanySection_contentLeading___a1MS">
-                <h2 className="text-eyebrow OpenCompanySection_eyebrow__eU9aN" id="about-heading">
-                  About us
-                </h2>
-                <p className="text-heading OpenCompanySection_heading__z9qiT">We are an open company</p>
-                <p className="OpenCompanySection_text__rlo_F">
-                  Since 2013, we’ve shared Buffer’s finances, team salaries, and other key metrics openly. Our
-                  commitment to transparency is rooted in our belief that it fosters trust, keeps us accountable, and
-                  helps drive positive change within our industry.
-                </p>
+                <div>
+                  <h2 className="text-eyebrow OpenCompanySection_eyebrow__eU9aN" id="about-heading">
+                    About us
+                  </h2>
+                  <p className="text-heading OpenCompanySection_heading__z9qiT">We are an open company</p>
+                  <p className="OpenCompanySection_text__rlo_F">
+                    Since 2013, we’ve shared Buffer’s finances, team salaries, and other key metrics openly. Our
+                    commitment to transparency is rooted in our belief that it fosters trust, keeps us accountable, and
+                    helps drive positive change within our industry.
+                  </p>
+                </div>
                 <Link className="LinkButtonGhost_link__pzdZR OpenCompanySection_contentLeadingCTA__mUNFb" href="/open">
                   <span className="LinkButtonGhost_linkContent__QVeoO">
                     <span>Open dashboard</span>
@@ -355,6 +357,15 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
+
+              <div className="OpenCompanySection_contentTrailingCTAContainer__cx2pd">
+                <Link className="LinkButtonGhost_link__pzdZR" href="/open">
+                  <span className="LinkButtonGhost_linkContent__QVeoO">
+                    <span>Open dashboard</span>
+                    <ArrowRightIcon className="OpenCompanySection_contentLeadingCTAIcon__YEOYX" />
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
