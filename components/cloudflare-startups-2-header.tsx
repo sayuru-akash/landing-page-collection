@@ -169,7 +169,15 @@ export function CloudflareStartups2Header() {
           <CloudflareWordmark className={styles.logoWordmark} />
         </Link>
 
-        <div className={styles.desktopNavWrap} onMouseLeave={() => (selected ? undefined : setActiveKey(null))}>
+        <div
+          className={styles.desktopNavWrap}
+          onMouseLeave={() => {
+            if (!selected) {
+              setActiveKey(null);
+              updateIndicator(null);
+            }
+          }}
+        >
           <nav className={styles.desktopNav} aria-label="Main navigation" ref={navRef}>
             <span
               className={styles.navIndicator}
@@ -327,11 +335,18 @@ export function CloudflareStartups2Header() {
                             )}
                             {selectedItem.footerLinks.length > 0 ? (
                               <div className={styles.menuChin}>
-                                {selectedItem.footerLinks.map((link, index) => (
-                                  <Link className={index === 0 ? styles.menuChinPrimary : undefined} href={link.href} key={link.href}>
-                                    {link.title}
+                                {selectedItem.footerLinks[0] ? (
+                                  <Link className={styles.menuChinPrimary} href={selectedItem.footerLinks[0].href}>
+                                    {selectedItem.footerLinks[0].title}
                                   </Link>
-                                ))}
+                                ) : null}
+                                <div className={styles.menuChinSecondary}>
+                                  {selectedItem.footerLinks.slice(1).map((link) => (
+                                    <Link href={link.href} key={link.href}>
+                                      {link.title}
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
                             ) : null}
                           </motion.div>
