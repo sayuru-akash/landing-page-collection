@@ -8,10 +8,10 @@ import {
   BOTTOM_LOGO_VIEWBOX,
   TOP_LOGO_PATH,
   TOP_LOGO_VIEWBOX,
-} from "@/lib/cloudflare-startups-2-logo-paths";
-import styles from "@/components/cloudflare-startups-2.module.css";
+} from "@/lib/cloudflare-startups-logo-paths";
+import styles from "@/components/cloudflare-startups.module.css";
 
-const ASSET_BASE = "/images/cloudflare-startups-2";
+const ASSET_BASE = "/images/cloudflare-startups";
 const LOOP_MS = 14_000;
 const FADE_IN_END = 0.1;
 const FADE_OUT_START = 0.9;

@@ -2,14 +2,14 @@
 
 import { useId, useState } from "react";
 
-import type { FaqItem } from "@/lib/cloudflare-startups-2-data";
-import styles from "@/components/cloudflare-startups-2.module.css";
+import type { FaqItem } from "@/lib/cloudflare-startups-data";
+import styles from "@/components/cloudflare-startups.module.css";
 
 type Props = {
   items: FaqItem[];
 };
 
-export function CloudflareStartups2Faq({ items }: Props) {
+export function CloudflareStartupsFaq({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
 

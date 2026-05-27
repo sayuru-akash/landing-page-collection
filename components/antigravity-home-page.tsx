@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AntigravityHeader } from "@/components/antigravity-header";
+import { AntigravityRail } from "@/components/antigravity-rail";
 import { AntigravityScrollVideo } from "@/components/antigravity-scroll-video";
 import { ParticleField } from "@/components/antigravity-particles";
 import {
@@ -167,7 +168,7 @@ export function AntigravityHomePage() {
             hobbyist vibe-coding in their spare time, or anyone in between.
           </p>
         </div>
-        <div className={styles.caseRail}>
+        <AntigravityRail label="Use case slides" railClassName={styles.caseRail}>
           {useCaseCards.map((card) => (
             <Link className={styles.caseCard} href={card.href} key={card.title}>
               <div className={styles.caseImage}>
@@ -183,6 +184,10 @@ export function AntigravityHomePage() {
                 <span className={styles.casePlay}>
                   <Symbol>play_arrow</Symbol>
                 </span>
+                <span className={styles.caseHoverCursor} aria-hidden="true">
+                  <Symbol>play_arrow</Symbol>
+                  <span>Watch case</span>
+                </span>
               </div>
               <div className={styles.caseText}>
                 <h4>{card.title}</h4>
@@ -194,15 +199,7 @@ export function AntigravityHomePage() {
               </div>
             </Link>
           ))}
-        </div>
-        <div className={styles.sliderControls} aria-hidden="true">
-          <button type="button">
-            <Symbol>keyboard_arrow_left</Symbol>
-          </button>
-          <button type="button">
-            <Symbol>keyboard_arrow_right</Symbol>
-          </button>
-        </div>
+        </AntigravityRail>
       </section>
 
       <section className={styles.solutionsSection}>
@@ -233,7 +230,11 @@ export function AntigravityHomePage() {
             View blog
           </Link>
         </div>
-        <div className={styles.blogRail}>
+        <AntigravityRail
+          controlsClassName={styles.blogSliderControls}
+          label="Blog slides"
+          railClassName={styles.blogRail}
+        >
           {blogItems.map((blog) => (
             <Link className={styles.blogCard} href={blog.href} key={blog.title}>
               <Image
@@ -254,15 +255,7 @@ export function AntigravityHomePage() {
               </span>
             </Link>
           ))}
-        </div>
-        <div className={styles.sliderControls} aria-hidden="true">
-          <button type="button">
-            <Symbol>keyboard_arrow_left</Symbol>
-          </button>
-          <button type="button">
-            <Symbol>keyboard_arrow_right</Symbol>
-          </button>
-        </div>
+        </AntigravityRail>
       </section>
 
       <section className={styles.downloadSection}>

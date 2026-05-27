@@ -2,23 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
-import { CloudflareStartups2Faq } from "@/components/cloudflare-startups-2-faq";
-import { CloudflareStartups2Header } from "@/components/cloudflare-startups-2-header";
-import { CloudflareStartupsHeroLogos } from "@/components/cloudflare-startups-2-hero-logos";
-import { CloudflareStartupsHeroText } from "@/components/cloudflare-startups-2-hero-text";
-import { CloudflareLogo, CloudflareWordmark } from "@/components/cloudflare-startups-2-logo";
+import { CloudflareStartupsFaq } from "@/components/cloudflare-startups-faq";
+import { CloudflareStartupsHeader } from "@/components/cloudflare-startups-header";
+import { CloudflareStartupsHeroLogos } from "@/components/cloudflare-startups-hero-logos";
+import { CloudflareStartupsHeroText } from "@/components/cloudflare-startups-hero-text";
+import { CloudflareLogo, CloudflareWordmark } from "@/components/cloudflare-startups-logo";
 import {
   faqItems,
   featureColumns,
-  footerGroups,
+  footerColumns,
   qualifications,
   resources,
   tiers,
   type Qualification,
-} from "@/lib/cloudflare-startups-2-data";
-import styles from "@/components/cloudflare-startups-2.module.css";
+} from "@/lib/cloudflare-startups-data";
+import styles from "@/components/cloudflare-startups.module.css";
 
-const ASSET_BASE = "/images/cloudflare-startups-2";
+const ASSET_BASE = "/images/cloudflare-startups";
 const heroLogos = [
   { src: "perplexity.png", path: "top" },
   { src: "notion.png", path: "top" },
@@ -107,10 +107,10 @@ function DividerPattern() {
   );
 }
 
-export function CloudflareStartups2Page() {
+export function CloudflareStartupsPage() {
   return (
     <div className={styles.page}>
-      <CloudflareStartups2Header />
+      <CloudflareStartupsHeader />
       <main className={styles.main}>
         <section className={styles.hero} aria-labelledby="cloudflare-startups-hero">
           <div className={styles.heroShell}>
@@ -128,6 +128,8 @@ export function CloudflareStartups2Page() {
             <MobileHeroLogoCarousel />
           </div>
         </section>
+
+        <DividerPattern />
 
         <section className={styles.section} aria-labelledby="program-tiers">
           <SectionIntro
@@ -201,6 +203,8 @@ export function CloudflareStartups2Page() {
           </div>
         </section>
 
+        <DividerPattern />
+
         <section className={styles.section} aria-labelledby="qualify">
           <SectionIntro title="Do I qualify?" subtitle="You qualify if your startup meets all of the following:" />
           <div className={styles.qualifyGrid}>
@@ -214,6 +218,8 @@ export function CloudflareStartups2Page() {
           </div>
         </section>
 
+        <DividerPattern />
+
         <section className={styles.resourcesSection} aria-labelledby="resources">
           <SectionIntro title="Resources for founders" subtitle="Begin building with Cloudflare" />
           <div className={styles.resourceLinks}>
@@ -225,10 +231,14 @@ export function CloudflareStartups2Page() {
           </div>
         </section>
 
+        <DividerPattern />
+
         <section className={styles.faqSection} aria-labelledby="faq">
           <h2 id="faq">Frequently asked questions</h2>
-          <CloudflareStartups2Faq items={faqItems} />
+          <CloudflareStartupsFaq items={faqItems} />
         </section>
+
+        <DividerPattern />
 
         <section className={styles.ctaSection} aria-labelledby="ready">
           <h2 id="ready">Ready to build?</h2>
@@ -247,16 +257,24 @@ export function CloudflareStartups2Page() {
             <CloudflareWordmark />
           </Link>
           <div className={styles.footerGroups}>
-            {footerGroups.map((group) => (
-              <nav aria-label={group.title} key={group.title}>
-                <h3>{group.title}</h3>
-                {group.links.map((link) => (
-                  <Link href="#" key={link}>
-                    {link}
-                  </Link>
+            {footerColumns.map((column, columnIndex) => (
+              <div className={styles.footerColumn} key={columnIndex}>
+                {column.map((group) => (
+                  <nav aria-label={group.title} key={group.title}>
+                    <h3>{group.title}</h3>
+                    {group.links.map((link) => (
+                      <Link href="#" key={link}>
+                        {link}
+                      </Link>
+                    ))}
+                  </nav>
                 ))}
-              </nav>
+              </div>
             ))}
+            <div className={styles.footerCtas}>
+              <Link href="https://dash.cloudflare.com/sign-up">Start building</Link>
+              <Link href="https://dash.cloudflare.com/login">Log in</Link>
+            </div>
           </div>
         </div>
         <div className={styles.footerBottom}>

@@ -23,7 +23,7 @@
   --ag-muted: #45474d;
   --ag-muted-soft: #6a6a71;
   --ag-primary: #121317;
-  --ag-primary-hover: #2f3137;
+  --ag-primary-hover: #2f3034;
   --ag-glow: rgba(60, 107, 255, 0.38);
   --ag-radius: 32px;
   --ag-max: 1296px;
@@ -103,7 +103,7 @@
 
 .button:hover,
 .button:focus-visible {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .page .buttonPrimary {
@@ -121,15 +121,15 @@
 }
 
 .page .buttonSecondary {
-  background: #f8f8fa;
-  border-color: #e6e8ee;
+  background: rgba(183, 191, 217, 0.1);
+  border-color: rgba(33, 34, 38, 0.06);
   color: var(--ag-text);
 }
 
 .page .buttonSecondary:hover,
 .page .buttonSecondary:focus-visible {
-  background: #ffffff;
-  border-color: #d9dce4;
+  background: #f0f1f5;
+  border-color: rgba(33, 34, 38, 0.06);
 }
 
 .page .buttonInverse {
@@ -314,16 +314,16 @@
   color: #ffffff;
   cursor: pointer;
   display: none;
-  height: 72px;
+  height: 36px;
   justify-content: center;
   margin-left: auto;
   position: relative;
-  width: 126px;
+  width: 63px;
   z-index: 53;
 }
 
 .menuToggle .symbol {
-  font-size: 30px;
+  font-size: 18px;
 }
 
 .mobileMenu {
@@ -332,7 +332,7 @@
   display: none;
   left: 0;
   opacity: 0;
-  padding-top: 104px;
+  padding-top: 52px;
   pointer-events: none;
   position: fixed;
   right: 0;
@@ -369,12 +369,12 @@
   cursor: pointer;
   display: flex;
   font: inherit;
-  font-size: 52px;
+  font-size: 26px;
   font-weight: 450;
   justify-content: flex-start;
-  line-height: 1;
-  min-height: 154px;
-  padding: 0 48px;
+  line-height: 1.08;
+  min-height: 77px;
+  padding: 24px;
   width: 100%;
 }
 
@@ -383,8 +383,8 @@ a.mobileNavItem {
 }
 
 .mobileNavItem .symbol {
-  font-size: 56px;
-  margin-left: 20px;
+  font-size: 28px;
+  margin-left: 10px;
 }
 
 .mobileSubnav {
@@ -392,7 +392,7 @@ a.mobileNavItem {
   gap: 18px;
   max-height: 0;
   overflow: hidden;
-  padding: 0 48px;
+  padding: 0 24px;
   transition:
     max-height 180ms ease,
     padding-bottom 180ms ease;
@@ -400,7 +400,7 @@ a.mobileNavItem {
 
 .mobileSubnavOpen {
   max-height: 360px;
-  padding-bottom: 34px;
+  padding-bottom: 26px;
 }
 
 .mobileSubnav a {
@@ -412,7 +412,7 @@ a.mobileNavItem {
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  min-height: 1800px;
+  min-height: 100svh;
   overflow: hidden;
   position: relative;
 }
@@ -524,23 +524,26 @@ a.mobileNavItem {
 }
 
 .videoSection {
-  border-radius: 0 0 36px 36px;
-  height: 402px;
-  margin: 201px auto 200px;
-  overflow: hidden;
+  display: flow-root;
+  height: calc((100vw - 12px) * 9 / 16);
+  margin: 0 auto;
+  overflow: visible;
   position: relative;
-  transform: scale(calc(0.5 + (0.5 * var(--ag-video-progress, 1))));
+  transform: scale(calc(0.5 + (0.5 * var(--ag-video-progress, 0))));
   transform-origin: center center;
-  width: min(720px, calc(100vw - 48px));
+  width: 100%;
   will-change: transform;
 }
 
 .heroVideo {
   background: #000000;
+  border-radius: 36px;
   display: block;
   height: 100%;
+  margin-inline: 6px;
   object-fit: cover;
-  width: 100%;
+  overflow: hidden;
+  width: calc(100% - 12px);
 }
 
 .videoCursor {
@@ -597,7 +600,7 @@ a.mobileNavItem {
   cursor: pointer;
   height: 48px;
   position: absolute;
-  right: 22px;
+  right: 28px;
   transition: opacity 300ms ease, transform 300ms ease;
   width: 48px;
 }
@@ -837,8 +840,50 @@ a.mobileNavItem {
   height: 48px;
   position: absolute;
   right: 18px;
+  transition: opacity 300ms ease, transform 300ms ease;
   width: 48px;
   z-index: 2;
+}
+
+.caseHoverCursor {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(33, 34, 38, 0.06);
+  border-radius: 999px;
+  color: #000000;
+  display: inline-flex;
+  font-size: 17.5px;
+  font-weight: 450;
+  gap: 8px;
+  left: 50%;
+  letter-spacing: 0.18px;
+  line-height: 25.38px;
+  opacity: 0;
+  padding: 16px 24px 16px 16px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  transition: opacity 200ms ease, transform 200ms ease;
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.caseHoverCursor .symbol {
+  font-size: 24px;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "ROND" 50, "opsz" 48;
+}
+
+.caseCard:hover .casePlay,
+.caseCard:focus-visible .casePlay {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.caseCard:hover .caseHoverCursor,
+.caseCard:focus-visible .caseHoverCursor {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .caseText {
@@ -867,29 +912,41 @@ a.mobileNavItem {
 }
 
 .sliderControls {
-  display: flex;
-  gap: 2px;
+  align-items: center;
+  background: #f8f9fc;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 0;
   margin: 0 0 0 828px;
+  padding: 4px;
 }
 
 .sliderControls button {
   align-items: center;
-  background: #f8f8fb;
+  background: transparent;
   border: 0;
   color: var(--ag-text);
+  cursor: pointer;
   display: flex;
-  height: 48px;
+  height: 36px;
   justify-content: center;
-  width: 46px;
+  padding: 0;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+  width: 42px;
 }
 
-.sliderControls button:first-child {
-  border-radius: 999px 0 0 999px;
+.sliderControls button {
+  border-radius: 999px;
+}
+
+.sliderControls button:disabled {
   color: var(--ag-muted-soft);
+  cursor: default;
 }
 
-.sliderControls button:last-child {
-  border-radius: 0 999px 999px 0;
+.sliderControls button:not(:disabled):hover,
+.sliderControls button:not(:disabled):focus-visible {
+  background: #eff0f3;
 }
 
 .solutionsSection {
@@ -1007,6 +1064,10 @@ a.mobileNavItem {
 }
 
 .blogSection .sliderControls {
+  margin-left: 72px;
+}
+
+.blogSliderControls {
   margin-left: 72px;
 }
 
@@ -1243,8 +1304,10 @@ a.mobileNavItem {
   .typeReveal,
   .typingTextOne,
   .typingTextTwo,
+  .typingTextThree,
   .heroLineCursorOne,
   .heroLineCursorTwo,
+  .heroLineCursorThree,
   .featureRow,
   .solutionCard,
   .downloadContent,
@@ -1253,7 +1316,8 @@ a.mobileNavItem {
   }
 
   .typingTextOne,
-  .typingTextTwo {
+  .typingTextTwo,
+  .typingTextThree {
     clip-path: none;
   }
 
@@ -1321,13 +1385,13 @@ a.mobileNavItem {
 
   .header {
     backdrop-filter: none;
-    height: 104px;
-    padding: 16px 32px;
+    height: 52px;
+    padding: 8px 16px;
   }
 
   .logoLink img {
     height: auto;
-    width: 288px;
+    width: min(162px, 42vw);
   }
 
   .menuToggle,
@@ -1340,29 +1404,31 @@ a.mobileNavItem {
   }
 
   .heroSection {
-    min-height: 1000px;
-    padding-top: 104px;
+    height: 100svh;
+    min-height: 100svh;
+    padding-top: 52px;
   }
 
   .heroContent {
     margin-top: 0;
-    top: 656px;
-    width: min(690px, calc(100vw - 64px));
+    top: 322px;
+    width: calc(100vw - 32px);
   }
 
   .heroLogo {
-    margin-bottom: 74px;
-    width: 376px;
+    margin-bottom: 16px;
+    width: 231px;
   }
 
   .heroContent h1 {
-    font-size: clamp(56px, 8.6vw, 72px);
-    line-height: 1.02;
+    font-size: 48px;
+    line-height: 1.1;
   }
 
   .heroHeadline {
-    font-size: clamp(56px, 8.6vw, 72px);
-    line-height: 1.02;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
   .desktopTyping {
@@ -1378,36 +1444,41 @@ a.mobileNavItem {
   }
 
   .typingLine {
-    line-height: 1.02;
-    white-space: normal;
+    line-height: 1.1;
+    white-space: nowrap;
   }
 
   .heroActions {
     align-items: center;
     flex-direction: column;
-    margin-top: 148px;
+    gap: 4px;
+    margin-top: 64px;
+    width: 100%;
   }
 
   .heroButton {
-    font-size: 30px;
-    min-height: 90px;
-    min-width: 365px;
-    padding-inline: 34px;
+    font-size: 16px;
+    min-height: 45px;
+    min-width: auto;
+    padding-inline: 24px;
+    width: 100%;
   }
 
   .heroButton img {
-    height: 31px;
-    width: 26px;
+    height: 17px;
+    width: 14px;
   }
 
   .videoSection {
-    height: auto;
-    margin-block: 130px;
-    width: calc(100vw - 40px);
+    height: calc(((100vw - 12px) * 9 / 16) + 96px);
+    margin-block: 0;
+    width: 100%;
   }
 
   .heroVideo {
-    aspect-ratio: 720 / 402;
+    aspect-ratio: auto;
+    height: calc(100% - 96px);
+    margin-block: 48px;
   }
 
   .agentSection {
@@ -1508,50 +1579,53 @@ a.mobileNavItem {
 
 @media (max-width: 560px) {
   .header {
-    height: 104px;
-    padding-inline: 36px 32px;
+    height: 52px;
+    padding-inline: 16px;
   }
 
   .logoLink img {
-    width: 288px;
+    width: min(162px, 42vw);
   }
 
   .menuToggle {
-    height: 72px;
-    width: 126px;
+    height: 36px;
+    width: 63px;
   }
 
   .mobileNavItem {
-    font-size: 52px;
-    min-height: 154px;
-    padding-inline: 48px;
+    font-size: 26px;
+    line-height: 1.08;
+    min-height: 77px;
+    padding: 24px;
   }
 
   .mobileSubnav {
-    padding-inline: 48px;
+    padding-inline: 24px;
   }
 
   .heroSection {
-    min-height: 1000px;
+    min-height: 100svh;
   }
 
   .heroContent {
-    width: calc(100vw - 48px);
+    width: calc(100vw - 32px);
   }
 
   .heroLogo {
-    width: 376px;
+    width: 231px;
   }
 
   .heroContent h1,
   .heroHeadline {
-    font-size: 54px;
-    letter-spacing: -0.065em;
+    font-size: 48px;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
   .heroButton {
-    font-size: 30px;
-    min-height: 90px;
+    font-size: 16px;
+    min-height: 45px;
+    min-width: auto;
   }
 
   .featureCopy h2,
@@ -1621,35 +1695,37 @@ a.mobileNavItem {
 
 @media (max-width: 390px) {
   .header {
-    padding-inline: 20px;
+    padding-inline: 16px;
   }
 
   .logoLink img {
-    width: 252px;
+    width: min(162px, 42vw);
   }
 
   .menuToggle {
-    height: 64px;
-    width: 96px;
+    height: 36px;
+    width: 63px;
   }
 
   .mobileNavItem {
-    font-size: 44px;
-    padding-inline: 32px;
+    font-size: 26px;
+    min-height: 77px;
+    padding: 24px;
   }
 
   .heroContent h1,
   .heroHeadline {
-    font-size: 46px;
+    font-size: 48px;
+    line-height: 1.1;
   }
 
   .heroLogo {
-    width: 320px;
+    width: 231px;
   }
 
   .heroButton {
-    font-size: 24px;
-    min-height: 74px;
-    min-width: 310px;
+    font-size: 16px;
+    min-height: 45px;
+    min-width: auto;
   }
 }

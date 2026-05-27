@@ -333,11 +333,20 @@ export const faqItems: FaqItem[] = [
   },
 ];
 
-export const footerGroups = [
-  { title: "Getting started", links: ["Plans", "Partners", "Startups", "Under Attack?", "Domain Name Search"] },
-  { title: "Public Interest", links: ["Project Galileo", "Athenian Project", "Cloudflare for Campaigns", "Project Fairshot", "Impact/ESG"] },
-  { title: "Resources", links: ["Under Attack?", "Documentation", "Learning Center", "App Innovation Report", "Cloudflare Radar", "Case Studies", "Community", "Blog"] },
-  { title: "Company", links: ["About", "Careers", "Investors", "Press", "Press kit", "Global network"] },
-  { title: "Compliance", links: ["Compliance resources", "Trust", "GDPR", "Responsible AI", "Transparency report", "Report abuse"] },
-  { title: "Solutions", links: ["SSE and SASE Platform", "Cloudflare AI Cloud", "Frontend Development Platform", "Multi-Tenant Platform Development", "Web Security Platform"] },
+export const footerColumns = [
+  [
+    { title: "Getting started", links: ["Plans", "Contact sales", "Partners", "Find a partner", "Startups", "Under attack?", "Domain name search"] },
+    { title: "Company", links: ["About", "Careers", "Investors", "Press", "Press kit", "Global network"] },
+  ],
+  [
+    { title: "Public interest", links: ["Project Galileo", "Athenian Project", "Cloudflare for Campaigns", "Project Fairshot", "Impact/ESG"] },
+    { title: "Compliance", links: ["Compliance resources", "Trust", "GDPR", "Responsible AI", "Transparency report", "Report abuse"] },
+  ],
+  [
+    { title: "Resources", links: ["App innovation report", "Cloudflare Radar", "Case studies", "Status", "Support", "Events", "Blog"] },
+    { title: "Developers", links: ["Documentation", "Learning center", "Community"] },
+  ],
+  [
+    { title: "Solutions", links: ["SSE and SASE platform", "Cloudflare AI Cloud", "Frontend Development Platform", "Multi-Tenant Platform Development", "Web Security Platform"] },
+  ],
 ];

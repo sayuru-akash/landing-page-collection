@@ -9,9 +9,20 @@ function clamp(value: number) {
   return Math.max(0, Math.min(1, value));
 }
 
+function easeVideoProgress(value: number) {
+  if (value < 0.5) {
+    return value * value * 1.15;
+  }
+
+  return 0.2875 + ((value - 0.5) / 0.5) * 0.7125;
+}
+
 export function AntigravityScrollVideo() {
   const sectionRef = useRef<HTMLElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const currentProgressRef = useRef(0);
+  const frameRef = useRef<number | null>(null);
+  const targetProgressRef = useRef(0);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -22,17 +33,43 @@ export function AntigravityScrollVideo() {
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+    const renderProgress = () => {
+      const next =
+        currentProgressRef.current +
+        (targetProgressRef.current - currentProgressRef.current) * 0.1;
+
+      currentProgressRef.current =
+        Math.abs(next - targetProgressRef.current) < 0.002
+          ? targetProgressRef.current
+          : next;
+
+      section.style.setProperty("--ag-video-progress", currentProgressRef.current.toFixed(4));
+
+      if (currentProgressRef.current !== targetProgressRef.current) {
+        frameRef.current = window.requestAnimationFrame(renderProgress);
+      } else {
+        frameRef.current = null;
+      }
+    };
+
     const updateProgress = () => {
       if (prefersReducedMotion.matches) {
+        currentProgressRef.current = 1;
+        targetProgressRef.current = 1;
         section.style.setProperty("--ag-video-progress", "1");
         return;
       }
 
-      const rect = section.getBoundingClientRect();
       const viewportHeight = window.innerHeight || 1;
-      const progress = clamp((viewportHeight - rect.top) / (viewportHeight * 0.5));
+      const start = section.offsetTop - viewportHeight;
+      const end = section.offsetTop - viewportHeight * 0.25;
+      const progress = easeVideoProgress(clamp((window.scrollY - start) / Math.max(1, end - start)));
 
-      section.style.setProperty("--ag-video-progress", progress.toFixed(3));
+      targetProgressRef.current = progress;
+
+      if (frameRef.current === null) {
+        frameRef.current = window.requestAnimationFrame(renderProgress);
+      }
     };
 
     updateProgress();
@@ -44,6 +81,10 @@ export function AntigravityScrollVideo() {
       window.removeEventListener("scroll", updateProgress);
       window.removeEventListener("resize", updateProgress);
       prefersReducedMotion.removeEventListener("change", updateProgress);
+
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
     };
   }, []);
 

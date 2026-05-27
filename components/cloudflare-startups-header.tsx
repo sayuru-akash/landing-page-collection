@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
-import { mainNav } from "@/lib/cloudflare-startups-2-data";
-import { CloudflareLogo, CloudflareWordmark } from "@/components/cloudflare-startups-2-logo";
-import styles from "@/components/cloudflare-startups-2.module.css";
+import { mainNav } from "@/lib/cloudflare-startups-data";
+import { CloudflareLogo, CloudflareWordmark } from "@/components/cloudflare-startups-logo";
+import styles from "@/components/cloudflare-startups.module.css";
 
 type DropdownKey = (typeof mainNav)[number]["key"];
 type ActiveKey = DropdownKey | "pricing" | null;
@@ -59,7 +59,7 @@ function columnHref(column: (typeof mainNav)[number]["columns"][number], fallbac
   return "href" in column ? column.href : fallback;
 }
 
-export function CloudflareStartups2Header() {
+export function CloudflareStartupsHeader() {
   const [selected, setSelected] = useState<DropdownKey | null>(null);
   const [activeKey, setActiveKey] = useState<ActiveKey>(null);
   const [slideDirection, setSlideDirection] = useState(1);
@@ -376,6 +376,27 @@ export function CloudflareStartups2Header() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
                 >
+                  <div className={styles.mobileMenuChrome}>
+                    <Link className={styles.mobileMenuLogo} href="/" aria-label="Cloudflare logo" onClick={closeMobile}>
+                      <CloudflareLogo />
+                    </Link>
+                    <div className={styles.mobileMenuChromeActions}>
+                      <Link className={styles.mobileMenuLoginAction} href="https://dash.cloudflare.com/login" onClick={closeMobile}>
+                        Login
+                      </Link>
+                      <button
+                        className={styles.mobileMenuClose}
+                        type="button"
+                        aria-label="Close menu"
+                        aria-controls={menuId}
+                        aria-expanded="true"
+                        onClick={closeMobile}
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </div>
+                  </div>
                   <AnimatePresence mode="wait" initial={false}>
                     {mobileView ? (
                       <motion.div

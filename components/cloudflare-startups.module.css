@@ -3,7 +3,7 @@
   font-family: "CF Kunst";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/cloudflare-startups-2/kunst-grotesk-regular.woff2") format("woff2");
+  src: url("/fonts/cloudflare-startups/kunst-grotesk-regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-family: "CF Kunst";
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/cloudflare-startups-2/kunst-grotesk-medium.woff2") format("woff2");
+  src: url("/fonts/cloudflare-startups/kunst-grotesk-medium.woff2") format("woff2");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-family: "CF Mono";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/cloudflare-startups-2/apercu-mono-pro-regular.woff2") format("woff2");
+  src: url("/fonts/cloudflare-startups/apercu-mono-pro-regular.woff2") format("woff2");
 }
 
 .page {
@@ -135,14 +135,14 @@
 }
 
 .navIndicator {
-  background: rgba(240, 227, 222, 0.08);
+  background: rgba(25, 24, 23, 0.5);
   border: 1px solid var(--cf-border);
   border-radius: 6px;
-  height: 28px;
+  height: 36px;
   left: 0;
   opacity: 0;
   position: absolute;
-  top: 22px;
+  top: 18px;
   transition: opacity 200ms ease-out, transform 300ms ease-out, width 300ms ease-out, background-color 200ms ease-out;
   z-index: 0;
 }
@@ -217,10 +217,10 @@
   color-scheme: dark;
   font-family: "CF Kunst", Arial, sans-serif;
   left: 50%;
-  padding-top: 8px;
+  padding-top: 24px;
   pointer-events: auto;
   position: fixed;
-  top: 56px;
+  top: 40px;
   transform: translateX(-50%);
   z-index: 50;
 }
@@ -395,8 +395,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  min-height: 44px;
-  padding: 8px 8px 0;
+  min-height: 36px;
+  padding: 8px 0 0;
 }
 
 .menuChin a {
@@ -404,7 +404,7 @@
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
-  padding: 8px;
+  padding: 4px 12px;
   transition: color 200ms ease-out;
 }
 
@@ -423,7 +423,7 @@
 .menuChinSecondary {
   align-items: center;
   display: flex;
-  gap: 14px;
+  gap: 4px;
   justify-content: flex-end;
 }
 
@@ -516,7 +516,7 @@
 }
 
 .hero {
-  padding: 80px 16px 104px;
+  padding: 80px 16px 95px;
 }
 
 .heroShell {
@@ -791,7 +791,16 @@
 }
 
 .sectionIntro h2,
-.faqSection h2,
+.faqSection h2 {
+  color: var(--cf-text);
+  font-size: clamp(32px, 3.75vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 1;
+  margin: 0;
+  text-wrap: balance;
+}
+
 .ctaSection h2 {
   color: var(--cf-text);
   font-size: clamp(40px, 4.3vw, 56px);
@@ -1245,8 +1254,8 @@
 
 .footerTop {
   display: grid;
-  gap: 64px;
-  grid-template-columns: minmax(220px, 1fr) minmax(0, 1.9fr);
+  gap: 80px;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2.25fr);
   min-height: 408px;
 }
 
@@ -1270,8 +1279,14 @@
 
 .footerGroups {
   display: grid;
-  gap: 58px 84px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .footerGroups nav {
@@ -1299,6 +1314,10 @@
 .footerBottom a:hover,
 .footerBottom button:hover {
   color: #fff;
+}
+
+.footerCtas {
+  display: none;
 }
 
 .footerBottom {
@@ -1408,7 +1427,7 @@
   }
 
   .footerGroups {
-    gap: 44px;
+    gap: 32px;
   }
 }
 
@@ -1427,7 +1446,7 @@
     display: grid;
     gap: 8px;
     grid-template-columns: minmax(0, 1fr) auto auto;
-    height: 56px;
+    height: 54px;
     padding-inline: 18px 10px;
   }
 
@@ -1439,23 +1458,24 @@
     border-radius: 999px;
     display: inline-flex;
     font-size: 15px;
-    height: 42px;
-    min-height: 42px;
+    height: 40px;
+    min-height: 40px;
     padding-inline: 18px;
     pointer-events: auto;
   }
 
   .mobileToggle {
     align-items: center;
-    border-radius: 999px;
+    background: rgba(25, 24, 23, 0.8);
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 44px;
+    height: 40px;
     justify-content: center;
     pointer-events: auto;
-    width: 44px;
+    width: 42px;
   }
 
   .mobileToggle span {
@@ -1608,7 +1628,7 @@
     background: rgba(21, 20, 20, 0.9);
     border-bottom: 1px solid var(--cf-border);
     display: flex;
-    height: 54px;
+    height: 48px;
     justify-content: space-between;
     padding: 0 12px;
     position: relative;
@@ -1684,8 +1704,7 @@
   }
 
   .tierGrid,
-  .featureBox,
-  .qualifyGrid {
+  .featureBox {
     grid-template-columns: 1fr;
   }
 
@@ -1704,11 +1723,32 @@
   }
 
   .qualifyCard:nth-last-child(1) {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .footerGroups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footerCtas {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-column: 1 / -1;
+  }
+
+  .footerCtas a {
+    color: var(--cf-text);
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 160ms var(--cf-ease);
+  }
+
+  .footerCtas a:hover {
+    color: var(--cf-accent);
   }
 }
 
@@ -1722,7 +1762,7 @@
   }
 
   .hero {
-    padding: 58px 0 146px;
+    padding: 58px 0 129px;
   }
 
   .heroFrame {
@@ -1801,7 +1841,8 @@
   .sectionIntro h2,
   .faqSection h2,
   .ctaSection h2 {
-    font-size: 42px;
+    font-size: 32px;
+    line-height: 1;
   }
 
   .sectionIntro p {
@@ -1822,8 +1863,31 @@
   }
 
   .qualifyCard {
-    min-height: 132px;
-    padding: 28px 22px;
+    min-height: 116px;
+    padding: 22px 16px;
+  }
+
+  .qualifyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .qualifyCard:nth-child(odd) {
+    border-right: 1px solid var(--cf-border);
+  }
+
+  .qualifyCard:nth-child(even),
+  .qualifyCard:nth-last-child(1) {
+    border-right: 0;
+  }
+
+  .qualifyCard h3 {
+    font-size: 14px;
+    line-height: 1.15;
+  }
+
+  .qualifyCard p {
+    font-size: 13px;
+    line-height: 1.2;
   }
 
   .resourcesSection {
@@ -1866,7 +1930,7 @@
   }
 
   .footerGroups {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footerBottom {
