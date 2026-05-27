@@ -467,9 +467,9 @@ a.mobileNavItem {
 }
 
 .typingText {
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(-0.16em 100% -0.2em 0);
   display: inline-block;
-  overflow: hidden;
+  overflow: visible;
   vertical-align: top;
   white-space: nowrap;
 }
@@ -1213,12 +1213,12 @@ a.mobileNavItem {
 
 @keyframes agTextReveal {
   from {
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(-0.16em 100% -0.2em 0);
     filter: blur(2px);
     opacity: 0.2;
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-0.16em 0 -0.2em 0);
     filter: blur(0);
     opacity: 1;
   }
@@ -1226,10 +1226,10 @@ a.mobileNavItem {
 
 @keyframes agClipType {
   from {
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(-0.16em 100% -0.2em 0);
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-0.16em 0 -0.2em 0);
   }
 }
 

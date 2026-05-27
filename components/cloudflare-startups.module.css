@@ -1523,6 +1523,82 @@
     z-index: 40;
   }
 
+  .mobileMenuChrome {
+    align-items: center;
+    background: rgba(21, 20, 20, 0.98);
+    border-bottom: 1px solid var(--cf-border);
+    display: flex;
+    height: 54px;
+    inset: 0 0 auto;
+    justify-content: space-between;
+    padding: 0 10px 0 18px;
+    position: fixed;
+    z-index: 3;
+  }
+
+  .mobileMenuLogo {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    margin-left: -12px;
+    padding: 14px 12px;
+  }
+
+  .mobileMenuLogo svg {
+    height: 26px;
+    width: 57px;
+  }
+
+  .mobileMenuChromeActions {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+  }
+
+  .mobileMenuLoginAction {
+    align-items: center;
+    border: 1px solid var(--cf-border);
+    border-radius: 999px;
+    color: var(--cf-text);
+    display: inline-flex;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    line-height: 1;
+    padding-inline: 18px;
+  }
+
+  .mobileMenuClose {
+    align-items: center;
+    background: rgba(25, 24, 23, 0.8);
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 40px;
+    justify-content: center;
+    width: 42px;
+  }
+
+  .mobileMenuClose span {
+    background: var(--cf-text);
+    border-radius: 99px;
+    display: block;
+    height: 2px;
+    width: 20px;
+  }
+
+  .mobileMenuClose span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .mobileMenuClose span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
   .mobileRoot {
     display: flex;
     flex-direction: column;
